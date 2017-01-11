@@ -32,7 +32,6 @@ public class BarHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_BAR);
-        insertBars();
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
@@ -92,6 +91,19 @@ public class BarHelper extends SQLiteOpenHelper {
      //   Log.d("Database Access", "Balance updated");
         db.close();
     //    return k;
+    }
+
+    public boolean isBarEmpty(){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String count = "SELECT count(*) FROM bar";
+        Cursor mcursor = db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount>0){
+            return false;
+        }
+        else return true;
     }
 
     public Cursor getInformation(SQLiteDatabase db){

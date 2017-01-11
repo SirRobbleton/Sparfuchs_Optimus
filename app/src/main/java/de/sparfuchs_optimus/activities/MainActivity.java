@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dbHelper = new BarHelper(ctx);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -90,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (position == 0)
                 {
+                    if (dbHelper.isBarEmpty() == true){
+                        dbHelper.insertBars();
+                    }
                     displayBars();
                 }
             }
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                dbHelper = new BarHelper(ctx);
+
                 /*if((dbHelper.insertBars() == -1))
                 {
                     Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_LONG).show();
