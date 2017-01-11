@@ -78,6 +78,27 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        mViewPager.setCurrentItem(1);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0)
+                {
+                    displayBars();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,14 +112,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_LONG).show();
                 }
                 else Toast.makeText(MainActivity.this, "Bar List was filled!", Toast.LENGTH_LONG).show();
-                */
+
 
                 displayBars();
                 //deleteBars();
-
+                */
             }
-        });
 
+        });
+        fab.hide();
 
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
