@@ -23,25 +23,34 @@ import android.widget.TextView;
 
 import de.sparfuchs_optimus.R;
 import de.sparfuchs_optimus.database.BarHelper;
-import de.sparfuchs_optimus.tasks.BackGroundTask;
+import de.sparfuchs_optimus.database.CouponHelper;
+import de.sparfuchs_optimus.tasks.BackGroundTaskBar;
+import de.sparfuchs_optimus.tasks.BackGroundTaskCoupon;
 
 import static de.sparfuchs_optimus.R.id.container;
 
 public class MainActivity extends AppCompatActivity {
 
+    CouponHelper helper;
     BarHelper dbHelper;
     Context ctx = this;
 
     public void displayBars()
     {
-        BackGroundTask barTask = new BackGroundTask(ctx);
+        BackGroundTaskBar barTask = new BackGroundTaskBar(ctx);
         barTask.execute("show_bars");
     }
 
     public void deleteBars()
     {
-        BackGroundTask task = new BackGroundTask(ctx);
+        BackGroundTaskBar task = new BackGroundTaskBar(ctx);
         task.execute("delete_bars");
+    }
+
+    public void displayCoupons()
+    {
+        BackGroundTaskCoupon couponTask = new BackGroundTaskCoupon(ctx);
+        couponTask.execute("show_coupons");
     }
 
     /**
@@ -66,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHelper = new BarHelper(ctx);
+        helper = new CouponHelper(ctx);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,10 +102,17 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (position == 0)
                 {
-                    if (dbHelper.isBarEmpty() == true){
+                    if (dbHelper.isBarEmpty()){
                         dbHelper.insertBars();
                     }
                     displayBars();
+                }
+                else if (position == 2)
+                {
+                    if (helper.isCouponEmpty()){
+                        helper.insertCoupons();
+                    }
+                    displayCoupons();
                 }
             }
 
@@ -188,6 +205,11 @@ public class MainActivity extends AppCompatActivity {
             {
                 View rootView = inflater.inflate(R.layout.fragment_bar, container, false);
                 return rootView;
+            }
+            else if(getArguments().getInt(ARG_SECTION_NUMBER) == 3)
+            {
+                View view = inflater.inflate(R.layout.fragment_coupon, container, false);
+                return view;
             }
             else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2)
             {}

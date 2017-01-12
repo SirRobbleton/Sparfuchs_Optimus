@@ -20,14 +20,14 @@ import static de.sparfuchs_optimus.database.BarContract.BalanceEntry.COLUMN_NAME
  * Created by bwpc on 11.01.2017.
  */
 
-public class BackGroundTask extends AsyncTask<String, Bar, String> {
+public class BackGroundTaskBar extends AsyncTask<String, Bar, String> {
 
     public Context ctx;
     public BarAdapter barAdapter;
     public Activity activity;
     public ListView listView;
 
-    public BackGroundTask(Context ctx)
+    public BackGroundTaskBar(Context ctx)
     {
         this.ctx = ctx;
         activity = (Activity)ctx;
