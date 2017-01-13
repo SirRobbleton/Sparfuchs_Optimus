@@ -47,17 +47,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
+                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                googleMap.setIndoorEnabled(false);
+                googleMap.setBuildingsEnabled(true);
 
-                // For showing a move to my location button
-                googleMap.setMyLocationEnabled(true);
+                // Set boundary for Karlsruhe
+                LatLngBounds karlsruhe = new LatLngBounds(
+                        new LatLng(48.996694, 8.378687), new LatLng(49.024639, 8.423896));
 
-                // For dropping a marker at a point on the Map
-                LatLng sydney = new LatLng(-34, 151);
-                googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
-
-                // For zooming automatically to the location of the marker
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
-                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                // Add a marker in Karlsruhe and move the camera
+                LatLng euro = new LatLng(49.009927, 8.395140);
+                LatLng shotz = new LatLng(49.008477, 8.396108);
+                LatLng badbrau = new LatLng(49.011877, 8.394246);
+                LatLng aposto = new LatLng(49.008791, 8.396359);
+                // googleMap.addMarker(new MarkerOptions().position(myLocation).title("Your Location!"));
+                googleMap.addMarker(new MarkerOptions().position(shotz).title("Shotz"));
+                googleMap.addMarker(new MarkerOptions().position(badbrau).title("Badisches Brauhaus"));
+                googleMap.addMarker(new MarkerOptions().position(aposto).title("Aposto"));
+                //googleMap.setLatLngBoundsForCameraTarget(karlsruhe);
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(euro, 16));
+                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder(googleMap.getCameraPosition()).tilt(50).build()));
             }
         });
         return rootView;
@@ -96,7 +105,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
         this.googleMap.addMarker(new MarkerOptions().position(badbrau).title("Badisches Brauhaus"));
         this.googleMap.addMarker(new MarkerOptions().position(aposto).title("Aposto"));
         //googleMap.setLatLngBoundsForCameraTarget(karlsruhe);
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(euro, 18));
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(euro, 17));
         this.googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder(this.googleMap.getCameraPosition()).tilt(50).build()));
 
 
