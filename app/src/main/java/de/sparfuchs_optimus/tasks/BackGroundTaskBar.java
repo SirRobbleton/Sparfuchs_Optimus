@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 import de.sparfuchs_optimus.R;
 import de.sparfuchs_optimus.adapter.BarAdapter;
-import de.sparfuchs_optimus.database.BarHelper;
+import de.sparfuchs_optimus.database.DatabaseHelper;
 import de.sparfuchs_optimus.model.Bar;
 
-import static de.sparfuchs_optimus.database.BarContract.BalanceEntry.COLUMN_ADDRESS;
-import static de.sparfuchs_optimus.database.BarContract.BalanceEntry.COLUMN_NAME;
+import static de.sparfuchs_optimus.database.BarContract.BarEntry.COLUMN_ADDRESS;
+import static de.sparfuchs_optimus.database.BarContract.BarEntry.COLUMN_NAME;
 
 /**
  * Created by bwpc on 11.01.2017.
@@ -37,13 +37,13 @@ public class BackGroundTaskBar extends AsyncTask<String, Bar, String> {
     public String doInBackground(String... params){
 
         String method = params[0];
-        BarHelper dbHelper = new BarHelper(ctx);
+        DatabaseHelper dbHelper = new DatabaseHelper(ctx);
 
         if(method.equals("show_bars")){
 
             listView = (ListView) activity.findViewById(R.id.bar_list);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor cursor = dbHelper.getInformation(db);
+            Cursor cursor = dbHelper.getBars(db);
             barAdapter = new BarAdapter(ctx, R.layout.bar);
             String name, address;
             while(cursor.moveToNext())

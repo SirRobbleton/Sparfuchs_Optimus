@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +23,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import de.sparfuchs_optimus.R;
-import de.sparfuchs_optimus.database.BarHelper;
-import de.sparfuchs_optimus.database.CouponHelper;
+import de.sparfuchs_optimus.database.DatabaseHelper;
 import de.sparfuchs_optimus.tasks.BackGroundTaskBar;
 import de.sparfuchs_optimus.tasks.BackGroundTaskCoupon;
 
@@ -31,8 +31,7 @@ import static de.sparfuchs_optimus.R.id.container;
 
 public class MainActivity extends AppCompatActivity {
 
-    CouponHelper helper;
-    BarHelper dbHelper;
+    DatabaseHelper dbHelper;
     Context ctx = this;
 
     public void displayBars()
@@ -74,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbHelper = new BarHelper(ctx);
-        helper = new CouponHelper(ctx);
+        dbHelper = new DatabaseHelper(ctx);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -102,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (position == 0)
                 {
+                    Log.d("UI Feedback", "Tab 1 selected");
                     if (dbHelper.isBarEmpty()){
                         dbHelper.insertBars();
                     }
@@ -109,10 +108,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (position == 2)
                 {
-                    if (helper.isCouponEmpty()){
-                        helper.insertCoupons();
+                    Log.d("UI Feedback", "Tab 3 selected");
+                    if (dbHelper.isCouponEmpty()){
+                        dbHelper.insertCoupons();
                     }
                     displayCoupons();
+
                 }
             }
 
@@ -212,7 +213,10 @@ public class MainActivity extends AppCompatActivity {
                 return view;
             }
             else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2)
-            {}
+            {
+                View view = inflater.inflate(R.layout.fragment_map, container, false);
+                return view;
+            }
 
                 View rootView = inflater.inflate(R.layout.fragment_main, container, false);
                 TextView textView = (TextView) rootView.findViewById(R.id.section_label);
@@ -234,6 +238,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
+            switch (position) {
+                case 1:
+                    return Fragment.instantiate(ctx, MapFragment.class.getName());
+            }
 
                     // getItem is called to instantiate the fragment for the given page.
                     // Return a PlaceholderFragment (defined as a static inner class below)
