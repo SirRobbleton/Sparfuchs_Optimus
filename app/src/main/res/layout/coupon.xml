@@ -15,20 +15,24 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/tv_category"
-            android:gravity="center|left"
+            android:gravity="center|left|bottom"
             android:text="category"
             android:textSize="20dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/date" />
+            android:layout_toEndOf="@+id/date"
+            android:textColor="@color/darkBrown" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:id="@+id/tv_description"
-            android:gravity="center|left"
+            android:gravity="center|left|top"
             android:text="description"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/heading" />
+            android:layout_toEndOf="@+id/heading"
+            android:textColor="@color/colorPrimaryDark" />
+
     </LinearLayout>
 
     <FrameLayout
@@ -43,7 +47,9 @@
             android:gravity="center|left"
             android:text="location"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/description" />
+            android:layout_toEndOf="@+id/description"
+            android:textColor="@color/darkBrown" />
+
     </FrameLayout>
 
 </LinearLayout>

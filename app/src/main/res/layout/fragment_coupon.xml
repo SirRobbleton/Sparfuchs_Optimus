@@ -11,11 +11,11 @@
     <ListView
         android:layout_width="match_parent"
         android:id="@+id/coupon_list"
-        tools:backgroundTint="@android:color/holo_orange_dark"
-        android:background="@android:color/holo_orange_dark"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="470dp"
+        android:background="@color/colorList"
+        android:layout_alignParentStart="true"
+        android:divider="@color/common_signin_btn_dark_text_default"
+        android:dividerHeight="1dp">
     </ListView>
 
 </RelativeLayout>

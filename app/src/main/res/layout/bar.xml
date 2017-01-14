@@ -8,19 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:id="@+id/tv_name"
-        android:gravity="center|left"
+        android:gravity="center|left|bottom"
         android:text="Expense"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/date" />
+        android:layout_toEndOf="@+id/date"
+        android:textColor="@color/darkBrown" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:id="@+id/tv_address"
-        android:gravity="center|left"
+        android:gravity="center|left|top"
         android:text="Balance"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/expense" />
+        android:layout_toEndOf="@+id/expense"
+        android:textColor="@color/colorPrimaryDark" />
+
 
 </LinearLayout>
