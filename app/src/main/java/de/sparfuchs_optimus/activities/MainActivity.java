@@ -4,8 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -127,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 
 
-                /*if((dbHelper.insertBars() == -1))
+                if((dbHelper.insertBars() == -1))
                 {
                     Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_LONG).show();
                 }
@@ -144,11 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
                 displayBars();
                 //deleteBars();
-                */
+
             }
 
         });
         fab.hide();
+        */
 
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
