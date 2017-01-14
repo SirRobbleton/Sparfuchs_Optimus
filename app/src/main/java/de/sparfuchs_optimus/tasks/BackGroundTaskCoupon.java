@@ -18,7 +18,7 @@ import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_DE
 import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_LOCATION;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Asynchronous Database Access on Coupon Table.
  */
 
 public class BackGroundTaskCoupon extends AsyncTask<String, Coupon, String> {

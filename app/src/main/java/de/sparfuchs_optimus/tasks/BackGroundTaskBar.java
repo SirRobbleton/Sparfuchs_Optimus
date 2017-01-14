@@ -17,7 +17,7 @@ import static de.sparfuchs_optimus.database.BarContract.BarEntry.COLUMN_ADDRESS;
 import static de.sparfuchs_optimus.database.BarContract.BarEntry.COLUMN_NAME;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Asynchronous Database Access on Bar Table.
  */
 
 public class BackGroundTaskBar extends AsyncTask<String, Bar, String> {

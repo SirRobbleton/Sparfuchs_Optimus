@@ -2,13 +2,12 @@ package de.sparfuchs_optimus.database;
 
 import android.provider.BaseColumns;
 
-import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_DESCRIPTION;
 import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_CATEGORY;
+import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_DESCRIPTION;
 import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.COLUMN_LOCATION;
-import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.TABLE_NAME;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Definition of coupon table.
  */
 
 public class CouponContract {

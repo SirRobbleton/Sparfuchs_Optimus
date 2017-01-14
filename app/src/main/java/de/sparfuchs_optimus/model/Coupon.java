@@ -1,7 +1,7 @@
 package de.sparfuchs_optimus.model;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Definition of a Coupon object.
  */
 
 public class Coupon {

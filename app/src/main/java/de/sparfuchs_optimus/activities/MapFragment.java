@@ -18,15 +18,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import de.sparfuchs_optimus.R;
 
+/**
+ * MapFragment, which will later be displayed in the ViewPager.
+ */
 public class MapFragment extends Fragment implements OnMapReadyCallback
 {
     private MapView mapView;
     private GoogleMap googleMap;
-
-    public static MapFragment newInstance() {
-        MapFragment mapFragment = new MapFragment();
-        return mapFragment;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,36 +41,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
             e.printStackTrace();
         }
 
-        mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap mMap) {
-                googleMap = mMap;
-                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                googleMap.setIndoorEnabled(false);
-                googleMap.setBuildingsEnabled(true);
-
-                // Set boundary for Karlsruhe
-                LatLngBounds karlsruhe = new LatLngBounds(
-                        new LatLng(48.996694, 8.378687), new LatLng(49.024639, 8.423896));
-
-                // Add a marker in Karlsruhe and move the camera
-                LatLng euro = new LatLng(49.009927, 8.395140);
-                LatLng shotz = new LatLng(49.008477, 8.396108);
-                LatLng badbrau = new LatLng(49.011877, 8.394246);
-                LatLng aposto = new LatLng(49.008791, 8.396359);
-                // googleMap.addMarker(new MarkerOptions().position(myLocation).title("Your Location!"));
-                googleMap.addMarker(new MarkerOptions().position(shotz).title("Shotz"));
-                googleMap.addMarker(new MarkerOptions().position(badbrau).title("Badisches Brauhaus"));
-                googleMap.addMarker(new MarkerOptions().position(aposto).title("Aposto"));
-                //googleMap.setLatLngBoundsForCameraTarget(karlsruhe);
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(euro, 16));
-                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder(googleMap.getCameraPosition()).tilt(50).build()));
-            }
-        });
         return rootView;
     }
-
-
 
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState){
@@ -84,6 +54,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
         mapView.getMapAsync(this);//when you already implement OnMapReadyCallback in your fragment
     }
 
+    /**
+     * Configuration of the MapView Fragment, once it's ready.
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
@@ -105,7 +79,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
         LatLng scruffy = new LatLng(49.011642, 8.395445);
         LatLng aposto = new LatLng(49.008791, 8.396359);
         LatLng koffer = new LatLng(49.008314, 8.391809);
-        // googleMap.addMarker(new MarkerOptions().position(myLocation).title("Your Location!"));
         this.googleMap.addMarker(new MarkerOptions().position(shotz).title("Shotz"));
         this.googleMap.addMarker(new MarkerOptions().position(badbrau).title("Badisches Brauhaus"));
         this.googleMap.addMarker(new MarkerOptions().position(aposto).title("Aposto"));
@@ -120,23 +93,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
 
 
         /*
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-                //Location Permission already granted
-                buildGoogleApiClient();
-                googleMap.setMyLocationEnabled(true);
-            } else {
-                //Request Location Permission
-                checkLocationPermission();
-            }
-        } else {
-            buildGoogleApiClient();
-            googleMap.setMyLocationEnabled(true);
-            return;
-        }
-        */
-        /*if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(ctx, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    Activity#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -144,9 +101,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for Activity#requestPermissions for more details.
-            return;
-        }*/
+            this.googleMap.setMyLocationEnabled(true);
+        }
+        */
         this.googleMap.setMyLocationEnabled(true);
+
     }
 
     @Override

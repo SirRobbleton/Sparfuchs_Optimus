@@ -14,7 +14,9 @@ import de.sparfuchs_optimus.model.Bar;
 import de.sparfuchs_optimus.R;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Adapter fills Block(Row)-Layout.
+ * In this case bar.xml.
+ * List will be filled with blocks by Main-Thread.
  */
 
 public class BarAdapter extends ArrayAdapter {

@@ -14,7 +14,9 @@ import de.sparfuchs_optimus.model.Coupon;
 import de.sparfuchs_optimus.R;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Adapter fills Block(Row)-Layout.
+ * In this case coupon.xml.
+ * List will be filled with blocks by Main-Thread.
  */
 
 public class CouponAdapter extends ArrayAdapter {

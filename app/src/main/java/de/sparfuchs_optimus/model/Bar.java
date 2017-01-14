@@ -1,8 +1,8 @@
 package de.sparfuchs_optimus.model;
 
 /**
- * Created by bwpc on 11.01.2017.
- */
+ * Definition of a Bar object.
+ * */
 
 public class Bar {
 

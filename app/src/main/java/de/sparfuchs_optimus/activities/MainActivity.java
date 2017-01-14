@@ -125,30 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-
-                if((dbHelper.insertBars() == -1))
-                {
-                    Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_LONG).show();
-                }
-                else Toast.makeText(MainActivity.this, "Bar List was filled!", Toast.LENGTH_LONG).show();
-
-
-                displayBars();
-                //deleteBars();
-
-            }
-
-        });
-        fab.hide();
-        */
 
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

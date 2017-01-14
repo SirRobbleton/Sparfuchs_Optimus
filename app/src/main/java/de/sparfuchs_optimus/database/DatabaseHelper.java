@@ -22,7 +22,8 @@ import static de.sparfuchs_optimus.database.CouponContract.CouponEntry.TABLE_NAM
 import static de.sparfuchs_optimus.database.CouponContract.DELETE_COUPON;
 
 /**
- * Created by bwpc on 11.01.2017.
+ * Creation of SQLite Database on the device.
+ * Provides methods to fill the database.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
