@@ -2,6 +2,7 @@ package de.sparfuchs_optimus.activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#b14303"));
+        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
+        tabLayout.setTabTextColors(Color.parseColor("#f2a876"), Color.parseColor("#ffffff"));
+
+
         mViewPager.setCurrentItem(1);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
@@ -147,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(getColor(android.R.color.holo_orange_dark));
+        window.setStatusBarColor(getColor(R.color.colorPrimaryDark));
     }
 
 
