@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#b14303"));
         tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
-        tabLayout.setTabTextColors(Color.parseColor("#f2a876"), Color.parseColor("#ffffff"));
+        tabLayout.setTabTextColors(Color.parseColor("#ffd7c5"), Color.parseColor("#ffffff"));
 
 
         mViewPager.setCurrentItem(1);
