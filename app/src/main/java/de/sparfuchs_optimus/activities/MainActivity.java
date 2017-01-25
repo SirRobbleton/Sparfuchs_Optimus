@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+
     @TargetApi(23)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
